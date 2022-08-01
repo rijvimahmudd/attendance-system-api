@@ -1,9 +1,13 @@
 {
   "name": "attendanceSystem",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./server.js"
+  },
   "repository": "https://github.com/rijvimahmudd/attendanceSystem.git",
-  "author": "Rijvi Mahmud <saandytwinkle134@gmail.com>",
+  "author": "Rijvi Mahmud",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
