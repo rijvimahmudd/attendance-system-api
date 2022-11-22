@@ -1,0 +1,122 @@
+### variables
+@host = http://localhost:8000/api/v1
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzBhNTM1ZjBkOGJhN2E0YmM1MGIzMGMiLCJuYW1lIjoiUmlqdmkiLCJlbWFpbCI6InJpakBnbWFpbC5jb20iLCJyb2xlcyI6WyJTVFVERU5UIl0sImFjY291bnRTdGF0dXMiOiJQRU5ESU5HIiwiaWF0IjoxNjYxNjIxMTAwfQ.Eff2_XU4ftuWGo6SZJXJXbKbgMwbk3TtdLgLVdepXKk
+
+
+
+### health check
+
+GET http://localhost:8000/health HTTP/1.1
+
+
+### Registration route
+
+POST {{host}}/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Rijvi",
+    "email": "rij@gmail.com",
+    "password": "12345678"
+}
+
+
+### login route
+
+POST {{host}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    
+    "email": "rij@gmail.com",
+    "password": "12345678"
+}
+
+
+### get all users route
+
+GET  {{host}}/users/ HTTP/1.1
+Authorization: {{token}}
+
+### get one users route
+
+GET  {{host}}/users/630a53560d8ba7a4bc50b309 HTTP/1.1
+Authorization: {{token}}
+
+
+### create new user by admin
+
+POST {{host}}/users HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "name": "Rijvi",
+    "email": "rviiiii@gmail.com",
+    "password": "12345678",
+    "roles":["STUDENT", "ADMIN"],
+    "accountStatus":"ACTIVE"
+}
+
+### delete user
+
+DELETE {{host}}/users/630a53a10d8ba7a4bc50b319 HTTP/1.1
+Authorization: {{token}}
+
+
+### update user
+
+PATCH {{host}}/users/630a53b50d8ba7a4bc50b320 HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "name":"akib",
+    "roles":["STUDENT", "ADMIN"],
+    "accountStatus":"ACTIVE"
+}
+
+### PUT user
+
+PUT {{host}}/users/630a53b50d8ba7a4bc50b320 HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "email":"akib@gmail.com"
+}
+
+
+### admin attendance/ timesheet
+
+GET {{host}}/admin/attendance/enable HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "timeLimit":5
+}
+
+### admin attendance status/ timesheet
+
+GET {{host}}/admin/attendance/status HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+### admin attendance disable/ timesheet
+
+GET {{host}}/admin/attendance/disable HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+### Student attendance / timesheet
+
+GET {{host}}/student/attendance/630a53df0d8ba7a4bc50b336 HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+### student attendance disable/ timesheet
+
+GET {{host}}/student/attendance/status HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
